@@ -23,7 +23,7 @@ export default function Contacts({className,  ...props }) {
 		<div className={styles.contacts_form}>
 			<h2>Написати нам</h2>
 			
-			<label For="name">Ім'я</label>
+			<label For="name">Ім&apos;я</label>
 			<input type="text" name='name' placeholder="Ім'я"/>
 			<label For="email">Email</label>
 			<input type="email" placeholder="Email"/>

@@ -15,7 +15,7 @@ export default function Header({className,  ...props }) {
 				<div className={styles.logo}><Link href="/">
 				{/* <li className={styles.logo}><Link href="/"> */}
 					<Image src='/assets/header/logo.png' width='57' height='65' alt='логотип'/></Link>
-					<span>Факультет комп'ютерних наук та технологій ВУТД</span>
+					<span>Факультет комп&apos;ютерних наук та технологій ВУТД</span>
 				{/* </li>	 */}
 				</div>
 
