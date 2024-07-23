@@ -1,19 +1,18 @@
-
 .news {
-	display: grid;
+    display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 10px;
     padding: 50px;
-	align-items: center;
+    align-items: center;
 
-	padding-left: 160px;
-	padding-right: 160px;
+    padding-left: 160px;
+    padding-right: 160px;
     background-color: var(--white);
-  
+
 
 }
 
-.news h1{
+.news h1 {
     display: grid;
     padding-bottom: 50px;
     align-items: center;
@@ -23,7 +22,7 @@
 
 }
 
-.card_item{
+.card_item {
     display: grid;
     align-items: center;
     justify-content: center;
@@ -32,21 +31,27 @@
 
 
 
-@media (max-width: 765px) {
-	 .news {
-		height: auto;
-		padding-left: 30px;
-		padding-right: 30px;
+@media (max-width: 1024px) {
+    .news {
+        width: auto;
+        padding-left: 30px;
+        padding-right: 30px;
         grid-column: span 12;
         grid-template-rows: auto;
         justify-items: start;
-	 }
-     .card_item{
-    display: grid;
-    margin-top:100px;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 12;
-}
+    }
 
-}	
+    .card_item {
+        display: grid;
+        width: auto;
+        margin-top: 100px;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 12;
+    }
+
+    .card_item img{
+        width: 100%;
+    }
+
+}
