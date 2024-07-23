@@ -1,0 +1,22 @@
+
+/* .card {
+	display: flex;
+	height: 513px;
+
+	padding-left: 0px;
+	padding-right: 0px;
+	color: var(--text-primary);
+	background: var(--white);
+} */
+
+.line{
+	margin: 16px 16px;
+	width: 80px;
+  	border-bottom: 1px solid #888;
+}
+
+.card span {
+	 white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}

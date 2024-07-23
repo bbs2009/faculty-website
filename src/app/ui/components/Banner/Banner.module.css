@@ -1,0 +1,41 @@
+
+.banner {
+	display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    padding: 10px;
+	align-items: center;
+
+	height: 600px;
+	padding-left: 160px;
+	padding-right: 160px;
+    background-color: var(--secondary-blue-100);
+    background-image:linear-gradient( to left, var(--secondary-blue-100), white);
+    background-image: url('/assets/banner/banner1.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: contain;
+
+}
+
+.text_block{
+    display: grid;
+    
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    grid-column: span 4;
+}
+
+
+@media (max-width: 765px) {
+	 .banner {
+		height: auto;
+		padding-left: 30px;
+		padding-right: 30px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        justify-items: start;
+	 }
+
+}	
