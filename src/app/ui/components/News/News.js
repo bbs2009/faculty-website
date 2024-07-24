@@ -7,7 +7,7 @@ import NewsCard from '../NewsCard/NewsCard';
 
 export default function News({className,  ...props }) {
   return (
-	<news className={clsx(className, styles.news)}  {...props}>
+	<news className={clsx(className, styles.news_list)}  {...props}>
 		<h1>Факультетське життя</h1>
 		<div className={styles.card_item}><NewsCard /></div>
 		<div className={styles.card_item}><NewsCard /></div>

@@ -2,22 +2,34 @@
 .contacts {
 	display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 10px;
-    padding: 50px;
+    /* gap: 10px; */
 	align-items: center;
-
+    align-self: center;
 	padding-left: 160px;
 	padding-right: 160px;
     background-color: var(--white);
-  
 
 }
+
 .contacts_block{
     display: grid;
-   
     align-items: center;
     justify-content: center;
     grid-column: span 6;
+    /* height: 600px; */
+    
+}
+.contacts_block2{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 6;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 6;
+    background-color: var(--secondary-blue-100);
+    height: 600px;
     
 }
 
@@ -26,29 +38,34 @@
     flex-direction: column;
 }
 
+.contacts_info h3{
+    margin-top: 40px;
+}
+
 .contacts_form{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 6;
-    background-color: var(--secondary-blue-100);
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.contacts_form h2{
+    margin-top: 40px;
     
 }
+
+
 
 .contacts_map{
     display: grid;
     align-items: center;
+    /* gap:10px; */
     justify-content: center;
     grid-column: span 12;
     width: 100%;
     
 }
 
-.contacts_map iframe{
-    /* width: 100%; */
-    /* height: 650px; */
-
-}
 
 
 

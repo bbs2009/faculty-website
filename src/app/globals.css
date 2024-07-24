@@ -1,3 +1,6 @@
+@import url('normalize.css');
+
+
 :root {
   --white: #FFFFFF;
   --black: #020D1D;
@@ -6,6 +9,7 @@
   --text-primary:#051C40;
   --secondary-blue-25:#F0F6FF;
   --secondary-blue-100:#D6E6FF;
+  --secondary-blue-400:#1E498B;
   --secondary-blue-500:#002B6E;
   
 

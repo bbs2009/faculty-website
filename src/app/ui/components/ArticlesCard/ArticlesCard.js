@@ -6,7 +6,7 @@ import ButtonTag from '../ButtonTag/ButtonTag';
 
 export default function ArticlesCard({className,  ...props }) {
 	  return ( 
-	<card className={clsx(className, styles.card1)}  {...props}>
+	<card className={clsx(className, styles.card_container)}  {...props}>
 		<div className={styles.card_body}>
 			<h3>Розробка алгоритму глибокого навчання для розпізнавання образів</h3>
 			<span  className={styles.description}>Наш факультет комп&apos;ютерних наук прагне створити студентам оптимальні умови для навчання та досліджень. Оновлені програми курсів, наближені до реальної динаміки ІТ-сфери, дозволяють студентам отримувати актуальні знання та вміння. Крім того, ми заохочуємо активну участь студентів у конференціях, семінарах та воркшопах.</span>

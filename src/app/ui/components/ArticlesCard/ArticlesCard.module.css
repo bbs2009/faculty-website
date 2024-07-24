@@ -1,21 +1,18 @@
 
-.card {
+.card_container {
 	display: flex;
-	/* height: 513px; */
-
-	/* padding-left: 0px; */
-	/* padding-right: 0px; */
 	color: var(--text-primary);
 	background: var(--secondary-blue-25);
+	
 }
 
 .card_body{
 	/* height: 513px; */
-	width: 450px;
+	/* width: 450px; */
 
 	display: flex;
 	padding: 20px;
-	flex-direction: column;
+	flex-flow: column wrap;
 	justify-content: center;
 	color: var(--text-primary);
 	background: var(--secondary-blue-25);
@@ -31,7 +28,8 @@
 }
 
  .description {
-	width: 400px;
+	
+	width: 350px;
 	white-space: nowrap;
   	overflow: hidden;
 	overflow-wrap: break-word;
@@ -42,10 +40,13 @@
 .card_body .author {
 	width: 100%;
 	align-items: start;
+	padding: 5px 5px;
+	font-weight: bold;
 }
 .card_body .author_name {
 	width: 100%;
 	align-items: start;
+	padding: 5px 5px;
 }
 
 .card_body button{

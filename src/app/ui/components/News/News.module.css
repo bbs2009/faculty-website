@@ -1,10 +1,10 @@
-.news {
+.news_list {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 10px;
-    padding: 50px;
-    align-items: center;
-
+    gap: 20px;
+    /* padding: 20px; */
+    /* align-items: center; */
+    /* height: 513px; */
     padding-left: 160px;
     padding-right: 160px;
     background-color: var(--white);
@@ -12,9 +12,9 @@
 
 }
 
-.news h1 {
+.news_list h1 {
     display: grid;
-    padding-bottom: 50px;
+    /* padding-bottom: 30px; */
     align-items: center;
     justify-content: center;
     grid-column: span 12;
@@ -24,29 +24,35 @@
 
 .card_item {
     display: grid;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    gap:50px;
+    /* width:  450px; */
+    /* align-items: center;
+    justify-content: center; */
     grid-column: span 4;
 }
 
 
 
 @media (max-width: 1024px) {
-    .news {
-        width: auto;
+    .news_list {
+        display: grid;
+        gap: 10px;
         padding-left: 30px;
         padding-right: 30px;
+        /* padding: 20px; */
         grid-column: span 12;
-        grid-template-rows: auto;
-        justify-items: start;
+        
+        /* justify-items: start; */
     }
 
     .card_item {
         display: grid;
-        width: auto;
-        margin-top: 100px;
-        align-items: center;
-        justify-content: center;
+
+        margin-top: 50px;
+        margin-bottom: 50px;
+        /* align-items: center;
+        justify-content: center; */
         grid-column: span 12;
     }
 

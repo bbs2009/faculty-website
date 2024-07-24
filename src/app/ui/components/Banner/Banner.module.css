@@ -20,15 +20,18 @@
 
 .text_block{
     display: grid;
-    
     align-items: center;
     justify-content: center;
     color: var(--black);
     grid-column: span 4;
 }
 
+.text_block p{
+    text-align: justify;
+}
 
-@media (max-width: 765px) {
+
+@media (max-width: 1024px) {
 	 .banner {
 		height: auto;
 		padding-left: 30px;
