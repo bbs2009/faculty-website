@@ -78,7 +78,7 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .header {
         height: auto;
         padding-left: 0px;
