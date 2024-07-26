@@ -11,7 +11,7 @@
 	/* width: 450px; */
 
 	display: flex;
-	padding: 20px;
+	padding: 10px;
 	flex-flow: column wrap;
 	justify-content: center;
 	color: var(--text-primary);
@@ -50,6 +50,7 @@
 }
 
 .card_body button{
-	margin: 10px;
-	width: 100%;
+	/* margin: 10px; */
+	margin: 10px 10px;
+	width: 80%;
 }
