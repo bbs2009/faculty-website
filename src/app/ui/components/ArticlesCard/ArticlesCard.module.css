@@ -11,7 +11,7 @@
 	/* width: 450px; */
 
 	display: flex;
-	margin: 20px;
+	margin: 10px;
 	flex-flow: column wrap;
 	justify-content: center;
 	color: var(--text-primary);
