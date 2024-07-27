@@ -45,7 +45,8 @@
 }
 
 .logo img {
-    height: 58px;
+    /* height: auto; */
+    /* height: 58px; */
     /* margin-right: 10px; */
 }
 

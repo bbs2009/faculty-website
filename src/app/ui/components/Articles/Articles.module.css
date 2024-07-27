@@ -12,7 +12,7 @@
 
 }
 
-.articles_list h1 {
+.articles_list .h1_main {
     display: grid;
     padding-bottom: 50px;
     align-items: center;
@@ -21,6 +21,31 @@
     color: var(--black);
 
 }
+.articles_list .h1_search {
+    display: grid;
+    padding-bottom: 10px;
+    align-items: start;
+    justify-content: start;
+    grid-column: span 12;
+    color: var(--black);
+
+}
+.articles_list .search_result {
+    display: grid;
+    padding-bottom: 10px;
+    align-items: start;
+    justify-content: start;
+    grid-column: span 12;
+    color: var(--black);
+
+}
+
+.articles_list .search_result_bold {
+    font-weight: bold;
+
+}
+
+
 
 .card_item {
     display: grid;

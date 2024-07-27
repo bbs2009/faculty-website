@@ -6,12 +6,12 @@ import Link from 'next/link';
 export default function Banner({className, header, description, banner_url, ...props }) {
 	 
   return (
-	<banner className={clsx(className, styles.banner )}   {...props}>
+	<div className={clsx(className, styles.banner )}   {...props}>
 		<div className={styles.text_block}>
 			<h1>{header}</h1>
 			<p>{description}</p>
 		</div>
 	
-	</banner>
+	</div>
   );
 }

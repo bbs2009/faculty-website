@@ -5,7 +5,6 @@ export default function FacultyNews() {
 	  return (
 	<>
 	  <Header />
-	  
 	  <h1>Новини факультету</h1>
 	  <Footer />
 	</>

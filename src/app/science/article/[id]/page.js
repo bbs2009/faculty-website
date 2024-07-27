@@ -8,15 +8,16 @@ import Footer from '@/app/ui/components/Footer/Footer';
 
 
 
+
 export default function ArticleDetailPage(...props) {
+	
 	const { id } = useParams()
+	
 
 return (
 	<>
-	
 	<Header />
-	{/* Article detail page. Article ID: {id} */}
-	<ArticleDetail />
+	<ArticleDetail article_id={id}  />
 	<Footer />
 	</>
 )

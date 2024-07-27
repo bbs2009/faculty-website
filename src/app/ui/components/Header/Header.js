@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 
 export default function Header({className,  ...props }) {
 	const pathname = usePathname();
-	console.log(pathname)
+	// console.log(pathname)
 	
   return (
 	<header className={clsx(className, styles.header)}  {...props}>
@@ -16,7 +16,7 @@ export default function Header({className,  ...props }) {
 			<ul>
 				<div className={styles.logo}><Link href="/">
 				{/* <li className={styles.logo}><Link href="/"> */}
-					<Image src='/assets/header/logo.png' width='57' height='65' alt='логотип'/></Link>
+					<Image src='/assets/header/logo.png' width='57' height='55' alt='логотип'/></Link>
 					<span>Факультет комп&apos;ютерних наук та технологій ВУТД</span>
 				{/* </li>	 */}
 				</div>
