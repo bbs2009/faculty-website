@@ -10,7 +10,7 @@ export default function ArticlesCard({className, title, description, autor, arti
 	
 	
 	return ( 
-	<div className={clsx(className, styles.card_container)}  {...props}>
+	<article className={clsx(className, styles.card_container)}  {...props}>
 		<div className={styles.card_body}>
 			<h2>{title}</h2>
 			<span  className={styles.description}>{description}</span>
@@ -19,6 +19,6 @@ export default function ArticlesCard({className, title, description, autor, arti
 			<span className={styles.author_name}>{autor}</span>
 			<ButtonTag appearance='secondary' onClick={onButtonClick} >Читати далі</ButtonTag>
 		</div>
-	</div>
+	</article>
   );
 }

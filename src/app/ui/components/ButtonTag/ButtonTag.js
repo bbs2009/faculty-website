@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function ButtonTag({className, appearance, children, ...props }) {
 	  return ( 
-		<button 
+		<button type='button'
 			className={clsx(styles.button, className, {
 			[styles.primary]: appearance == 'primary',
 			[styles.secondary]: appearance == 'secondary',})}

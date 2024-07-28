@@ -61,7 +61,7 @@ export default function SearchResults({ className,  searchString, ...props }) {
 
 
   return (
-    <div className={clsx(className, styles.articles_list)} {...props}>
+    <main className={clsx(className, styles.articles_list)} {...props} id='essense'>
       <ArticleDetailBack />
       <h1 className={styles.h1_search}>Результати пошуку:</h1>
        <div className={styles.search_result}>
@@ -103,6 +103,6 @@ export default function SearchResults({ className,  searchString, ...props }) {
         </div>
       ))}
       
-    </div>
+    </main>
   );
 }

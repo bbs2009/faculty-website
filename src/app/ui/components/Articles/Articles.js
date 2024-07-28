@@ -49,7 +49,7 @@ export default function Articles({ className, ...props }) {
   // console.log('articles[0].length', articles?.length);
 
   return (
-      <div className={clsx(className, styles.articles_list)} {...props}>
+      <main className={clsx(className, styles.articles_list)} {...props} id='essense'>
       <h1 className={styles.h1_main}>Наукова робота:</h1>
       
       {isEmpty ? <p>Статті відсутні</p> : null}
@@ -78,7 +78,7 @@ export default function Articles({ className, ...props }) {
           </ButtonTag>
         )}
       </div>
-    </div>
+    </main>
   );
 }
 

@@ -5,6 +5,8 @@ import Footer from '../ui/components/Footer/Footer';
 import SearchBanner from '../ui/components/SearchBanner/SearchBanner';
 import Articles from '../ui/components/Articles/Articles';
 import { Suspense } from 'react';
+import SkipLink from '../ui/components/SkipLink/SkipLink';
+
 
 export const metadata = {
   title: 'Наукова робота',
@@ -19,6 +21,7 @@ export default function Science() {
 
 	return (
 	<>
+	<SkipLink />
     <Header />
     <Banner header={header} description={description} />
 	<Suspense>

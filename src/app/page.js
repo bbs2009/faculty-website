@@ -5,7 +5,7 @@ import Header from './ui/components/Header/Header';
 import Banner from './ui/components/Banner/Banner';
 import News from './ui/components/News/News';
 import ButtonTag from './ui/components/ButtonTag/ButtonTag';
-
+import SkipLink from './ui/components/SkipLink/SkipLink';
 
 
 export default function Home() {
@@ -14,6 +14,7 @@ export default function Home() {
   
   return (
    <>
+    <SkipLink />
     <Header />
     <Banner header ={header} description={description}/>
     <News />

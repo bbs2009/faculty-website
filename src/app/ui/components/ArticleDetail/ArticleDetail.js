@@ -53,7 +53,7 @@ export default function ArticleDetail({ className, article_id, ...props }) {
   
 
   return (
-    <div className={clsx(className, styles.detail)} {...props}>
+    <article className={clsx(className, styles.detail)} {...props} id='essense'>
         <div className={styles.article_container}>
           <ArticleDetailBack />
         <div className={styles.container_header}>
@@ -80,10 +80,10 @@ export default function ArticleDetail({ className, article_id, ...props }) {
         </div>
         <div className={styles.container_full_text}>
           <ButtonTag appearance='primary' onClick={downloadPDF}>
-            <Image src='/assets/down.png' width='20' height='20' alt='download'  />Завантажити весь текст 
+            <Image src='/assets/down.png' width='20' height='20' alt=''  />Завантажити весь текст 
           </ButtonTag>
         </div>
       </div>
-    </div>
+    </article>
   )
 }

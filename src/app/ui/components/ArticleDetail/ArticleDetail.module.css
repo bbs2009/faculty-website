@@ -58,7 +58,7 @@
 
 .container_summary{
     display: flex;
-    text-align: justify;
+    text-align: flex-start;
 }
 
 .container_full_text{

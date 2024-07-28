@@ -14,10 +14,9 @@ export default function Contacts({ className, ...props }) {
 	const [nameError, setNameError] = useState('');
 	const [email, setEmail] = useState('');
 	const [emailError, setEmailError] = useState('');
-	const [isError, setIsError] = useState(true);
 	const [message, setMessage] = useState('');
 	const [messageError, setMessageError] = useState('');
-	
+	const [isError, setIsError] = useState(true);
 
 
 	const onChangeHandler = (e) => {
@@ -69,7 +68,7 @@ export default function Contacts({ className, ...props }) {
 	};
 
 	return (
-		<div className={clsx(className, styles.contacts)}  {...props}>
+		<main className={clsx(className, styles.contacts)}  {...props} id='essense'>
 			<div className={styles.contacts_block}>
 				<div className={styles.contacts_info}>
 					<h1>Контакти</h1>
@@ -114,6 +113,6 @@ export default function Contacts({ className, ...props }) {
 			<iframe className={styles.contacts_map} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.5035099779748!2d28.47205248740182!3d49.24790169761265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b5f28c12bc5%3A0x77f5b539abaaf3b!2z0YPQuy4g0JrQuNC10LLRgdC60LDRjywgNDMsINCS0LjQvdC90LjRhtCwLCDQktC40L3QvdC40YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDIxMDAw!5e0!3m2!1sru!2sua!4v1721687746667!5m2!1sru!2sua" height={531} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-		</div>
+		</main>
 	);
 }
