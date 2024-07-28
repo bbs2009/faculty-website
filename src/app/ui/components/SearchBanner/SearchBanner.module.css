@@ -70,7 +70,7 @@
         /* font-size: 16px; */
      }
 
-     .search input{
+     .input_text input{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -78,8 +78,22 @@
         height: 64px;
         padding: 24px 24px 24px 24px;
         font-size: 14px;
+        /* color: var(--black); */
      }
-     .search button{
+
+     #search:focus{
+        
+     
+        outline: none; 
+        box-shadow: 0 0 0 2px blue; 
+
+     }
+   .input_text  button:focus {
+      outline: none;
+        box-shadow: 0 0 0 2px blue;
+}
+
+     .input_text button{
         display: flex;
         align-items: center;
         justify-content: center;

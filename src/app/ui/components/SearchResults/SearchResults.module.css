@@ -3,6 +3,8 @@
 
     grid-template-columns: repeat(12, 1fr);
     gap: 10px;
+    /* padding: 50px; */
+    /* align-items: center; */
     padding-left: 160px;
     padding-right: 160px;
     background-color: var(--white);
@@ -10,15 +12,6 @@
 
 }
 
-.articles_list .h1_main {
-    display: grid;
-    padding-bottom: 50px;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 12;
-    color: var(--black);
-
-}
 .articles_list .h1_search {
     display: grid;
     padding-bottom: 10px;
@@ -28,14 +21,37 @@
     color: var(--black);
 
 }
-.articles_list .search_result {
+.search_result{
     display: grid;
+    padding-top: 10px;
     padding-bottom: 10px;
     align-items: start;
     justify-content: start;
     grid-column: span 12;
     color: var(--black);
 
+}
+
+.input_text_group{
+    display: grid;
+    padding-bottom: 10px;
+    align-items: start;
+    justify-content: start;
+    grid-column: span 12;
+    color: var(--black);
+}
+
+ .input_text{
+    display: flex;
+    
+    justify-content: space-around;
+   
+    color: var(--black);
+
+}
+
+.input_text  button{
+    margin-left: 20px;
 }
 
 .articles_list .search_result_bold {
@@ -75,7 +91,7 @@
 
     .card_item {
         display: grid;
-        /* width: 10px; */
+        width: auto;
         margin-top: 10px;
         grid-column: span 12;
     }

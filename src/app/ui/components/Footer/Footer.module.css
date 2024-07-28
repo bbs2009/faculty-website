@@ -25,7 +25,8 @@
 	padding: 25px 25px;
 	gap:8px;
 	align-items: flex-start;
-	color: var(--gray-500);
+	color: var(--white);
+	/* color: var(--gray-500); */
 	font-size: medium;
 }
 

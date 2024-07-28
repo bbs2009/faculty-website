@@ -7,48 +7,51 @@ import { useRouter } from 'next/navigation';
 
 import ArticlesCard from '../ArticlesCard/ArticlesCard';
 import ButtonTag from '../ButtonTag/ButtonTag';
-import { useGetArticles, useSearchArticles } from '../../../hooks/useAPI';
-import ArticleDetailBack from '../ArticleDetailBack/ArticleDetailBack';
+import { useGetArticles } from '../../../hooks/useAPI';
 
-// function useArticles(pageType, page, PAGE_SIZE, searchString) {
-//   if (pageType === 'default') {
-//     return useGetArticles(page, PAGE_SIZE);
-//   } else if (pageType === 'search') {
-//     return useSearchArticles(searchString, page, PAGE_SIZE);
-//   }
-// }
 
 export default function Articles({ className, ...props }) {
   const router = useRouter();
-  const PAGE_SIZE = 6;
+  const PAGE_SIZE = 2;
   const [page, setPage] = useState(1);
   const [publications, setPublications] = useState([]);
-  // const [searchStringState, setSearchStringState] = useState('');
-  // const [searchArticleCount, setSearchArticleCount] = useState(0);
 
   const { articles, isValidating, isLoading } = useGetArticles(page, PAGE_SIZE);
 
   useEffect(() => {
-    // if (searchString) {
-    //   setSearchStringState(searchString);
-    //   setSearchArticleCount(totalElements);
-    //   setPublications([]);
-    // }
+    setPublications([]); 
+    setPage(1); 
+  }, []);
 
+  
+  useEffect(() => {
     if (articles) {
-      setPublications((prevPublications) => [...prevPublications, ...articles]);
+      if (page === 1) {
+        setPublications(articles); 
+      } else {
+        setPublications((prevPublications) => [...prevPublications, ...articles]); 
+      }
     }
-  }, [articles]);
+  }, [articles, page]);
 
-  const isLoadingMore = isLoading || (page > 0 && publications && typeof publications[page - 1] === 'undefined');
-  const isEmpty = publications && publications[0] && publications[0].length === 0;
-  const isReachingEnd = isEmpty || (publications && publications.length < page);
+
+  
+  const isLoadingMore = isLoading || (articles > 0 && articles && typeof articles[page - 1] === 'undefined');
+  const isEmpty = articles && articles[0] && articles[0]?.length === 0;
+  const isReachingEnd = isEmpty || (articles && articles.length < page);
+
+  // console.log('isLoading', isLoading);
+  // console.log('isLoadingMore', isLoadingMore);
+  // console.log('isEmpty', isEmpty);
+  // console.log('isReachingEnd', isReachingEnd);
+  // console.log('page', page);
+  // console.log('articles', articles);
+  // console.log('articles[0].length', articles?.length);
 
   return (
-    <div className={clsx(className, styles.articles_list)} {...props}>
+      <div className={clsx(className, styles.articles_list)} {...props}>
       <h1 className={styles.h1_main}>Наукова робота:</h1>
-      {/* {pageType === 'search' ? <SearchResults searchStringState={searchStringState} searchArticleCount={searchArticleCount} /> : null} */}
-
+      
       {isEmpty ? <p>Статті відсутні</p> : null}
 
       {publications.map((publication) => (
@@ -79,15 +82,3 @@ export default function Articles({ className, ...props }) {
   );
 }
 
-// function SearchResults({ searchStringState, searchArticleCount }) {
-//   return (
-//     <>
-//       <ArticleDetailBack />
-//       <h1 className={styles.h1_search}>Результати пошуку:</h1>
-//       <span className={styles.search_result}>
-//         За пошуковим запитом <span className={styles.search_result_bold}>{searchStringState}</span> було знайдено
-//         <span className={styles.search_result_bold}> {searchArticleCount} статей</span>
-//       </span>
-//     </>
-//   );
-// }
