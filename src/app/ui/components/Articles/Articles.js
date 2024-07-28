@@ -7,20 +7,20 @@ import { useRouter } from 'next/navigation';
 
 import ArticlesCard from '../ArticlesCard/ArticlesCard';
 import ButtonTag from '../ButtonTag/ButtonTag';
-import {get_articles, search_articles} from '../../../hooks/useAPI';
+import {useGetArticles, useSearchArticles} from '../../../hooks/useAPI';
 import ArticleDetailBack from '../ArticleDetailBack/ArticleDetailBack';
 
 
 const get_search_api=(pageType, page, PAGE_SIZE, searchString)=>{
 	if (pageType==='default'){
 
-		const {articles, isValidating, isLoading} = get_articles(page, PAGE_SIZE);
+		const {articles, isValidating, isLoading} = useGetArticles(page, PAGE_SIZE);
 
 		return {articles, isValidating, isLoading}
 
 	}else if(pageType==='search'){
 
-		const {articles, isValidating, isLoading, totalElements} = search_articles(searchString, page, PAGE_SIZE);
+		const {articles, isValidating, isLoading, totalElements} = useSearchArticles(searchString, page, PAGE_SIZE);
 	
 		return {articles, isValidating, isLoading, totalElements}
 	}

@@ -4,7 +4,7 @@ import Banner from '../ui/components/Banner/Banner';
 import Footer from '../ui/components/Footer/Footer';
 import SearchBanner from '../ui/components/SearchBanner/SearchBanner';
 import Articles from '../ui/components/Articles/Articles';
-
+import { Suspense } from 'react';
 
 export default function Science() {
 	const header = 'Наукова робота';
@@ -15,7 +15,10 @@ export default function Science() {
 	<>
     <Header />
     <Banner header={header} description={description} />
-	<SearchBanner />
+	<Suspense>
+		<SearchBanner />
+	</Suspense>
+	
 	<Articles />
 	
 	<Footer />

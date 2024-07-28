@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import ButtonTag from '../ButtonTag/ButtonTag';
 import ArticleDetailBack from '../ArticleDetailBack/ArticleDetailBack';
 import Image from 'next/image';
-import {get_article_detail} from '../../../hooks/useAPI';
+import {useGetArticleDetail} from '../../../hooks/useAPI';
 
 
 
@@ -11,7 +11,7 @@ import {get_article_detail} from '../../../hooks/useAPI';
 
 export default function ArticleDetail({ className, article_id, ...props }) {
 
-  const {article, isLoading, isError, downloadPDF} = get_article_detail(article_id);
+  const {article, isLoading, isError, downloadPDF} = useGetArticleDetail(article_id);
   if (isLoading) {
     return (
       <div className={clsx(className, styles.detail)} {...props}>

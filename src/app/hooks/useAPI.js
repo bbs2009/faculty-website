@@ -38,7 +38,7 @@ const downloadPDF = (pdfBase64, fileName) => {
   }
 };
 
-function get_article_detail(id) {
+function useGetArticleDetail(id) {
 
   const { data, isLoading, error, fileData } = useSWR(id ? `${API_SERVER}/api/v1/publications/${id}` : null, fetcher);
   return {
@@ -50,7 +50,7 @@ function get_article_detail(id) {
   }
 }
 
-function get_articles(page, page_size) {
+function useGetArticles(page, page_size) {
 
   const { data,
     isValidating,
@@ -63,7 +63,7 @@ function get_articles(page, page_size) {
     isLoading
   }
 }
-function search_articles(search_string, page, page_size) {
+function useSearchArticles(search_string, page, page_size) {
 
   const { data,
     isValidating,
@@ -82,4 +82,4 @@ function search_articles(search_string, page, page_size) {
 }
 
 
-export { get_article_detail, get_articles, search_articles };
+export { useGetArticleDetail, useGetArticles, useSearchArticles };
