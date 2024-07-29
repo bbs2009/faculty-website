@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 
 
-const API_SERVER = 'http://89.168.113.31';
+const API_SERVER = 'https://89.168.113.31';
 
 
 
