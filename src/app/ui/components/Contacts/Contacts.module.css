@@ -50,6 +50,20 @@
 	flex-direction: column;
 }
 
+ .field input:focus{
+    border: 3px solid blue;
+    box-shadow: 2px 2px 2px 0 blue;
+}
+ .contacts_form_second_row textarea:focus{
+    border: 3px solid blue;
+    box-shadow: 2px 2px 2px 0 blue;
+}
+
+ .input_text button:focus{
+    border: 3px solid blue;
+    box-shadow: 2px 2px 2px 0 blue;
+}
+
 .contacts_form_second_row {
 	display: flex;
 	flex-direction: column;

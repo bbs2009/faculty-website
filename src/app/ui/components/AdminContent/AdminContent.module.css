@@ -1,0 +1,11 @@
+
+.content {
+    grid-area: content;
+    /* background-color: var(--secondary-blue-500); */
+    color: var(--black);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+

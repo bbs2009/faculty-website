@@ -21,12 +21,14 @@ export default function Contacts({ className, ...props }) {
 
 	const onChangeHandler = (e) => {
 		validateName(e.target.value);
+		
 		validateEmail(e.target.value);
 		validateMessage(e.target.value);
 	}
 
 
 	const validateName = (name) => {
+		
 		if (name.length < 2 && name.length>0 || name.length > 50) {
 			setNameError('*Ім\'я повинно містити від 2 до 50 символів');
 			setIsError(true);
@@ -34,6 +36,12 @@ export default function Contacts({ className, ...props }) {
 			setNameError('');
 			setIsError(false);
 		}
+
+		if (name ===''){
+			setNameError('*Поле не може бути пустим');
+			setIsError(true);
+		}
+
 	};
 	
 	const validateEmail = (email) => {
@@ -44,15 +52,23 @@ export default function Contacts({ className, ...props }) {
 			setEmailError('');
 			setIsError(false);
 		}
+		if (email ===''){
+			setNameError('*Поле не може бути пустим');
+			setIsError(true);
+		}
 	};
 	
 	const validateMessage = (message) => {
 		if (message.length < 10 && message.length>0 || message.length > 2000) {
-			setMessageError('*Повідомлення повинно містити від 2 до 50 символів');
+			setMessageError('*Повідомлення повинно містити від 10 до 2000 символів');
 			setIsError(true);
 		} else {
 			setMessageError('');
 			setIsError(false);
+		}
+		if (message ===''){
+			setNameError('*Поле не може бути пустим');
+			setIsError(true);
 		}
 	};
 
@@ -94,7 +110,7 @@ export default function Contacts({ className, ...props }) {
 							<div className={styles.field}>
 								{isError ? <span className={styles.error} >{emailError}</span> : ''}
 								<label htmlFor="email">Електронна адреса</label>
-								<input type="email" placeholder="Email" onChange={onChangeHandler} />
+								<input type="email" placeholder="Email" required={true} onChange={onChangeHandler} />
 							</div>
 						</div>
 						<div className={styles.contacts_form_second_row}>

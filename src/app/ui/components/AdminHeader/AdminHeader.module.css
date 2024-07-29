@@ -1,0 +1,18 @@
+
+.header {
+    grid-area: header;
+    /* background-color: var(--secondary-blue-500); */
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.description_text{
+    color:var(--black)
+}
+
+.header button{
+    width: 300px;
+}

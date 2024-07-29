@@ -12,7 +12,7 @@ export const metadata = {
 export default function ContactsPage() {
   return (
 	<>
-	<SkipLink />
+		<SkipLink />
 	  <Header />
 	  <Contacts />
 	  <Footer />

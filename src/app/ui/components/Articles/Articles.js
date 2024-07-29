@@ -12,7 +12,7 @@ import { useGetArticles } from '../../../hooks/useAPI';
 
 export default function Articles({ className, ...props }) {
   const router = useRouter();
-  const PAGE_SIZE = 2;
+  const PAGE_SIZE = 6;
   const [page, setPage] = useState(1);
   const [publications, setPublications] = useState([]);
 
