@@ -16,7 +16,7 @@ export default function LoginComponent({ className,  ...props }) {
             <div className={styles.logo}>
                 
                 <Image src='/assets/header/logo.png' width='50' height='50' alt='логотип'/>
-                <h1>Факультет комп'ютерних наук та технологій ВУТД</h1>
+                <h1>Факультет комп&apos;ютерних наук та технологій ВУТД</h1>
             </div>
             <div className={styles.logo_txt}>
             <h2 className={styles.login_box_h2}>Вхід</h2>

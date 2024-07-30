@@ -11,9 +11,10 @@ export default function AdminHeader({ className, description_text, button1, butt
 			<div className={styles.description_text}>
 				<h1>{description_text}</h1>
 			</div>
-			
+			<div className={styles.header_buttons}>
 			{button1}
 			{button2}
+			</div>
 		</header>
 	);
 }

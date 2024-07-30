@@ -13,6 +13,12 @@
     color:var(--black)
 }
 
+.header_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
 .header button{
-    width: 300px;
+    width: 250px;
 }

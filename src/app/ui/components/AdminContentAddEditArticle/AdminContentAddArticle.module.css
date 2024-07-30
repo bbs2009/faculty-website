@@ -4,7 +4,7 @@
     /* background-color: var(--secondary-blue-500); */
     color: var(--black);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     padding: 20px;
 }
@@ -31,7 +31,7 @@
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .form_group .char_count {
@@ -43,7 +43,7 @@
 
 .form_group_row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .form_group_row .form_group {
@@ -51,16 +51,21 @@
 }
 
 .form_group_row .form_group input {
-    width: calc(100% - 20px);
+    width: calc(100% - 50px);
 }
 
+
 .upload_file {
-    background-color: #ffc107;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin-top: 10px;
+   
+    margin-top: 50px;
+    
+}
+
+ .form_group textarea:focus{
+    border: 3px solid blue;
+    box-shadow: 2px 2px 2px 0 blue;
+}
+ .form_group input:focus{
+    border: 3px solid blue;
+    box-shadow: 2px 2px 2px 0 blue;
 }

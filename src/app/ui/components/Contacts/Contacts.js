@@ -105,18 +105,18 @@ export default function Contacts({ className, ...props }) {
 							<div className={styles.field}>
 								<label htmlFor="name">Ім`&#39;`я</label>
 								{isError ? <span className={styles.error} >{nameError}</span> : ''}
-								<input type="text" name='name' placeholder="Ім'я" onChange={onChangeHandler} />
+								<input type="text" name='name' placeholder="Ім'я" onChange={onChangeHandler} maxlength="50"/>
 							</div>
 							<div className={styles.field}>
 								{isError ? <span className={styles.error} >{emailError}</span> : ''}
 								<label htmlFor="email">Електронна адреса</label>
-								<input type="email" placeholder="Email" required={true} onChange={onChangeHandler} />
+								<input type="email" placeholder="Email" required={true} onChange={onChangeHandler} maxlength="100"/>
 							</div>
 						</div>
 						<div className={styles.contacts_form_second_row}>
 							{isError ? <span className={styles.error} >{messageError}</span> : ''}
 							<label htmlFor="message">Повідомлення</label>
-							<textarea name="message" placeholder="Повідомлення" onChange={onChangeHandler}></textarea>
+							<textarea name="message" placeholder="Повідомлення" onChange={onChangeHandler} maxlength="2000"></textarea>
 						</div>
 
 						<ButtonTag appearance='primary' disabled={isError}>Надіслати</ButtonTag>
