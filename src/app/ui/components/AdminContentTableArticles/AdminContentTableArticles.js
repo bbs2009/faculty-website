@@ -5,14 +5,26 @@ import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 import { useGetArticles } from '../../../hooks/useAPI';
 import Link from 'next/link';
+import Image from 'next/image';
+import AdminContentModal from '../AdminContentModal/AdminContentModal';
+import ButtonTag from '../ButtonTag/ButtonTag';
 
 export default function AdminContentTableArticles({ className,  ...props }) {
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
   const PAGE_SIZE = 6;
   const [page, setPage] = useState(1);
   const [publications, setPublications] = useState([]);
-
+  
   const { articles, isValidating, isLoading } = useGetArticles(page, PAGE_SIZE);
+
+  const handleOpenDelete = () =>   setOpenDelete(true);
+  const handleCloseDelete = () => setOpenDelete(false);
+  const handleOpenEdit = () =>   setOpenEdit(true);
+  const handleCloseEdit = () => setOpenEdit(false);
+
+
 
   useEffect(() => {
     setPublications([]); 
@@ -39,7 +51,18 @@ export default function AdminContentTableArticles({ className,  ...props }) {
 
 
 	return (
+    
 		<content className={clsx(className, styles.content)}{  ...props}>
+      <AdminContentModal open={openDelete} handleClose={handleCloseDelete} 
+        modal_body={<div>Ви впевнені, що хочете видалити цю публікацію?</div>}
+        button1={<ButtonTag appearance={'delete-primary'} onClick={handleCloseDelete}>Відхилити</ButtonTag>}
+				button2={<ButtonTag appearance={'secondary'}>Видалити</ButtonTag>}
+      />
+      <AdminContentModal open={openEdit} handleClose={handleCloseEdit} 
+        modal_body={<div>Ви впевнені, що хочете редагувати цю публікацію?</div>}
+        button1={<ButtonTag appearance={'edit-primary'} onClick={handleCloseEdit}>Відхилити</ButtonTag>}
+				button2={<ButtonTag appearance={'secondary'}>Видалити</ButtonTag>}
+      />
 			<table>
                 <thead>
                     <tr>
@@ -60,8 +83,8 @@ export default function AdminContentTableArticles({ className,  ...props }) {
                         <td>{publication.category}</td>
                         <td>{publication.date}</td>
                         <td className={styles.action}>
-                            <button className={styles.edit}>✏️</button>
-                            <button className={styles.delete}>🗑️</button>
+                            <button className={styles.edit} onClick={handleOpenEdit}><Image src='/assets/icon-btn1.png' width='48' height='48' alt=''/></button>
+                            <button className={styles.delete}  onClick={handleOpenDelete}><Image src='/assets/icon-btn2.png' width='48' height='48' alt=''/></button>
                         </td>
                     </tr>
 					))}	

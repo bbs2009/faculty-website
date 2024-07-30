@@ -20,9 +20,25 @@
   --btn-pimary-disabled: #5E6063;
   --btn-primary-text-disabled: #E2E5E8;
 
+  --btn-delete-primary-default: #B90000;
+  --btn-delete-primary-text: var(--white);
+  --btn-delete-primary-hover: #020D1D;
+  --btn-delete-primary-text-hover: #FFFFFF;
+  --btn-delete-primary-disabled: #5E6063;
+  --btn-delete-text-primary-disabled: #E2E5E8;
+
+
+  --btn-edit-primary-default: var(--secondary-blue-100);
+  --btn-edit-delete-primary-text: var(--text-primary);
+  --btn-edit-delete-primary-hover: #020D1D;
+  --btn-edit-delete-primary-text-hover: #FFFFFF;
+  --btn-edit-delete-primary-disabled: #5E6063;
+  --btn-edit-delete-text-primary-disabled: #E2E5E8;
+
+
   --btn-secondary-default: #FFBC0F;
   --btn-secondary-text: var(--text-primary);
-  --btn-secondary-fill: var(--white)
+  --btn-secondary-fill: var(--white);
   --btn-secondary-hover: var(--black);
   --btn-secondary-text-hover: var(--text-primary);
   --btn-secondary-fill-hover: var(--white)

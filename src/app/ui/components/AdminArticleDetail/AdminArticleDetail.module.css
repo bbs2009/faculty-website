@@ -4,17 +4,17 @@
     /* gap: 10px; */
     align-items: center;
     align-self: center;
-    padding-left: 160px;
-    padding-right: 160px;
+    padding-left: 100px;
+    padding-right: 100px;
     background-color: var(--white);
 
 }
 
 .article_container{
     display: grid;
-    grid-column: span 6;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    grid-column: span 12;
+    padding-top: 10px;
+    padding-bottom: 10px;
     
 }
 

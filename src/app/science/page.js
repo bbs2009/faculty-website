@@ -9,8 +9,8 @@ import SkipLink from '../ui/components/SkipLink/SkipLink';
 
 
 export const metadata = {
-  title: 'Наукова робота',
-  description: 'Наукова робота на факультеті комп\'ютерних наук та технологій',
+	title: 'Наукова робота',
+	description: 'Наукова робота на факультеті комп\'ютерних наук та технологій',
 }
 
 
@@ -20,17 +20,17 @@ export default function Science() {
 
 
 	return (
-	<>
-	<SkipLink />
-    <Header />
-    <Banner header={header} description={description} />
-	<Suspense>
-		<SearchBanner />
-	</Suspense>
-	
-	<Articles />
-	
-	<Footer />
-	</>
-  );
+		<>
+			<SkipLink />
+			<Header />
+			<Banner header={header} description={description} />
+			<Suspense>
+				<SearchBanner />
+			</Suspense>
+
+			<Articles />
+
+			<Footer />
+		</>
+	);
 }

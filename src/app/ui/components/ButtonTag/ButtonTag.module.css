@@ -32,6 +32,37 @@
 	color: var(--white);
 }
 
+
+
+.delete_primary {
+	color: var(--btn-delete-primary-text);
+	background-color: var(--btn-delete-primary-default);
+}
+.delete_primary:hover {
+	background-color: var(--black);
+	color: var(--white);
+}
+.delete_primary:disabled {
+	background-color: var(--gray-500);
+	color: var(--white);
+}
+
+
+
+.edit_primary {
+	color: var(--btn-edit-delete-primary-text);
+	background-color: var(--btn-edit-primary-default);
+}
+.edit_primary:hover {
+	background-color: var(--black);
+	color: var(--white);
+}
+.edit_primary:disabled {
+	background-color: var(--gray-500);
+	color: var(--white);
+}
+
+
 .secondary {
 	color: var(--black);
 	border: 1px solid var(--primary);
@@ -49,3 +80,5 @@
 	border: 1px solid var(--gray-500);
 	background-color: var(--white);
 }
+
+

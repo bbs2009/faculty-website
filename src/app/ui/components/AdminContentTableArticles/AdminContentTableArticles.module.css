@@ -12,10 +12,10 @@
 
 .content table {
     width: 100%;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     background-color: white;
-    border-radius: 5px;
-    overflow: hidden;
+    /* border-radius: 5px; */
+    /* overflow: hidden; */
 }
 
 .content table th, .content table td {
@@ -33,6 +33,7 @@
 }
 
 .content button.edit, .content button.delete {
+    
     border: none;
     background: none;
     cursor: pointer;
@@ -45,9 +46,9 @@
 }
 
 .content .action{
-    /* display: flex;
-    flex-direction: row; */
-    /* justify-content: center; */
-    align-items: center;
-    /* align-self: center; */
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+
+  
 }

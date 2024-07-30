@@ -7,14 +7,18 @@ import AdminFooter from '../ui/components/AdminFooter/AdminFooter.js';
 
 
 export default function AdminPage(...props) {
+
+
 	  return (
-	<>
-		<AdminHeader description_text={'Адмістративна панель'} />
+	        <div className={styles.container}>
+          <AdminHeader description_text={'Адмістративна панель'} />
 	
 		<AdminSidebar />
 		<AdminContent />
 		<AdminFooter/>	
+        </div>
+		
 
-	</>
+
 	  );
 }

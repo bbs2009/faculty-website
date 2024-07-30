@@ -8,6 +8,8 @@ export default function ButtonTag({className, appearance, children, ...props }) 
 		<button type='button'
 			className={clsx(styles.button, className, {
 			[styles.primary]: appearance == 'primary',
+			[styles.delete_primary]: appearance == 'delete-primary',
+			[styles.edit_primary]: appearance == 'edit-primary',
 			[styles.secondary]: appearance == 'secondary',})}
 			{...props}>
 			{children}	
