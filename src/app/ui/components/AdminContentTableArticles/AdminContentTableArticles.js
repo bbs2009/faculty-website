@@ -61,7 +61,7 @@ export default function AdminContentTableArticles({ className,  ...props }) {
       <AdminContentModal open={openEdit} handleClose={handleCloseEdit} 
         modal_body={<div>Ви впевнені, що хочете редагувати цю публікацію?</div>}
         button1={<ButtonTag appearance={'edit-primary'} onClick={handleCloseEdit}>Відхилити</ButtonTag>}
-				button2={<ButtonTag appearance={'secondary'}>Видалити</ButtonTag>}
+				button2={<ButtonTag appearance={'secondary'}>Редагувати</ButtonTag>}
       />
 			<table>
                 <thead>
@@ -83,8 +83,8 @@ export default function AdminContentTableArticles({ className,  ...props }) {
                         <td>{publication.category}</td>
                         <td>{publication.date}</td>
                         <td className={styles.action}>
-                            <button className={styles.edit} onClick={handleOpenEdit}><Image src='/assets/icon-btn1.png' width='48' height='48' alt=''/></button>
-                            <button className={styles.delete}  onClick={handleOpenDelete}><Image src='/assets/icon-btn2.png' width='48' height='48' alt=''/></button>
+                            <button className={styles.edit} onClick={handleOpenEdit} aria-label="Edit"><Image src='/assets/icon-btn1.png' width='48' height='48' alt='Edit'/> </button>
+                            <button className={styles.delete}  onClick={handleOpenDelete} aria-label="Delete"><Image src='/assets/icon-btn2.png' width='48' height='48' alt='Delete'/> </button>
                         </td>
                     </tr>
 					))}	

@@ -28,7 +28,8 @@ export default function AdminSidebar({ className, ...props }) {
 			</nav>
 
 			<div className={styles.logout}>
-				<a href="#">Вийти</a>
+				<Link href="admin/logout">Вийти</Link>
+				{/* <a href="#">Вийти</a> */}
 			</div>
 
 		</sidebar>

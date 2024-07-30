@@ -12,20 +12,22 @@
 
 .content table {
     width: 100%;
-    /* border-collapse: collapse; */
+    border-collapse: collapse;
     background-color: white;
     /* border-radius: 5px; */
     /* overflow: hidden; */
 }
 
 .content table th, .content table td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    height: 15px;
+    /* border-bottom: 1px solid #ddd; */
 }
 
 .content table th {
     background-color: #f4f4f4;
+    /* height: 50px; */
 }
 
 .content table tbody tr:hover {
@@ -33,22 +35,23 @@
 }
 
 .content button.edit, .content button.delete {
-    
+    padding-top: 100px;
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 16px;
-    margin: 0 5px;
+    /* align-self: auto; */
+    /* margin: 0 5px; */
 }
 
-.content button.delete {
+/* .content button.delete {
     color: red;
-}
+} */
 
 .content .action{
     display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
 
   
 }

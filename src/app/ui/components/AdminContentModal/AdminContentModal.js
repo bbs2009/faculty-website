@@ -1,9 +1,18 @@
 
 import styles from './AdminContentModal.module.css';
 import clsx from 'clsx';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function AdminContentModal({ className, open, handleClose, modal_body, button1, button2, ...props }) {
+  
+	 const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (open && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
 
@@ -23,7 +32,10 @@ export default function AdminContentModal({ className, open, handleClose, modal_
   if (!open) return null;
 
 	return (
-		<content className={clsx(className, styles.content)}{...props}>
+		<content className={clsx(className, styles.content)}
+			ref={modalRef}
+      		tabIndex="-1"
+		{...props}>
 			<div className={styles.modal_backdrop}>
 				<div className={styles.modal_header}>
 					<button className={styles.closeButton} onClick={handleClose}>X</button>
