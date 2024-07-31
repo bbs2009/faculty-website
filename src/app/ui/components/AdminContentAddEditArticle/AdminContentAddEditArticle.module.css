@@ -9,10 +9,15 @@
     padding: 20px;
 }
 
+.msg_text{
+    color: var(--gray-500);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
 .publication_form {
     background-color: white;
     padding: 20px;
-    /* border-radius: 5px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -28,10 +33,11 @@
 
 .form_group input, .form_group textarea {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
+    /* padding-left: 10px; */
+    /* margin-right: 25px; */
     font-size: 16px;
     border: 1px solid #ccc;
-    /* border-radius: 5px; */
 }
 
 .form_group .char_count {
@@ -51,13 +57,13 @@
 }
 
 .form_group_row .form_group input {
-    width: calc(100% - 50px);
+    width: calc(100% - 40px);
 }
 
 
 .upload_file {
    
-    margin-top: 50px;
+    margin-top: 20px;
     
 }
 
@@ -68,4 +74,14 @@
  .form_group input:focus{
     border: 3px solid blue;
     box-shadow: 2px 2px 2px 0 blue;
+}
+
+.error {
+    color: red;
+    border: 3px solid red;
+
+}
+
+.input_file{
+    display: none;
 }

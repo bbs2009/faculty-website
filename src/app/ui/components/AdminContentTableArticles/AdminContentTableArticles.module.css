@@ -3,26 +3,30 @@
     grid-area: content;
     /* background-color: var(--secondary-blue-500); */
     color: var(--black);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-between; */
     padding: 20px;
 }
 
 
 .content table {
     width: 100%;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     background-color: white;
-    /* border-radius: 5px; */
-    /* overflow: hidden; */
+
 }
 
-.content table th, .content table td {
+.content table th {
     padding: 10px;
     text-align: left;
     height: 15px;
-    /* border-bottom: 1px solid #ddd; */
+    border-bottom: 1px solid #ddd;
+}
+
+.content table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
 .content table th {
@@ -35,17 +39,13 @@
 }
 
 .content button.edit, .content button.delete {
-    padding-top: 100px;
+  
     border: none;
     background: none;
     cursor: pointer;
-    /* align-self: auto; */
-    /* margin: 0 5px; */
+
 }
 
-/* .content button.delete {
-    color: red;
-} */
 
 .content .action{
     display: flex;

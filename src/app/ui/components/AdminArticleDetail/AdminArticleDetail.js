@@ -4,56 +4,75 @@ import ButtonTag from '../ButtonTag/ButtonTag';
 import AdminArticleDetailBack from '../AdminArticleDetailBack/AdminArticleDetailBack';
 import Image from 'next/image';
 import {useGetArticleDetail} from '../../../hooks/useAPI';
+import { useEffect,useState } from 'react';
 
 
 
 
 
 export default function AdminArticleDetail({ className, article_id, ...props }) {
+     const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [category, setCategory] = useState('');
+    const [date, setDate] = useState('');
+    const [description, setDescription] = useState('');
+    const [isEmpty, setIsEmpty] = useState(true);
 
   const {article, isLoading, isError, downloadPDF} = useGetArticleDetail(article_id);
-  if (isLoading) {
-    return (
-      <div className={clsx(className, styles.detail)} {...props}>
+  // if (isLoading) {
+  //   return (
+  //     <div className={clsx(className, styles.detail)} {...props}>
   
-      <div className={styles.article_container_message}>
-        <p>Завантажуємо статтю...</p>
-      </div>     
-    </div>
-    )
-  }
+  //     <div className={styles.article_container_message}>
+  //       <p>Завантажуємо статтю...</p>
+  //     </div>     
+  //   </div>
+  //   )
+  // }
 
-  if (isError) {
-	  return (
-      <div className={clsx(className, styles.detail)} {...props}>
-      <AdminArticleDetailBack />
-      <div className={styles.article_container_message}>
+  // if (isError) {
+	//   return (
+  //     <div className={clsx(className, styles.detail)} {...props}>
+  //     <AdminArticleDetailBack />
+  //     <div className={styles.article_container_message}>
         
-        <h2>Виникла помилка при завантаженні</h2>
-      </div>     
-    </div>
-    )
-  }
+  //       <h2>Виникла помилка при завантаженні</h2>
+  //     </div>     
+  //   </div>
+  //   )
+  // }
 
-  if (!article) {
-    return (
-    <div className={clsx(className, styles.detail)} {...props}>
-      <AdminArticleDetailBack />
-      <div className={styles.article_container_message}>
-        <p>Статтю не знайдено</p>
-      </div>     
-    </div>
-    )
-  }
+  // if (!article) {
+  //   return (
+  //   <div className={clsx(className, styles.detail)} {...props}>
+  //     <AdminArticleDetailBack />
+  //     <div className={styles.article_container_message}>
+  //       <p>Статтю не знайдено</p>
+  //     </div>     
+  //   </div>
+  //   )
+  // }
 
-  const { title, author, category, date, description} = article;
- 
-  const pubdate = date;
+  useEffect(() => {
+        if (article) {
+            setTitle(article.title);
+            setAuthor(article.author);
+            setCategory(article.category);
+            setDate(article.date);
+            setDescription(article.description);
+            setIsEmpty(false);
+        }
+    }, [article]);
+
 
   
 
   return (
-    <article className={clsx(className, styles.detail)} {...props} id='essense'>
+    <article className={clsx(className, styles.detail)} {...props} >
+        {isLoading? 'Завантажуємо статтю...': null}
+        {isError? 'Виникла помилка при завантаженні': null}
+        {isEmpty && !isLoading && !isError ? 'Статтю не знайдено': null}
+        
         <div className={styles.article_container}>
           <AdminArticleDetailBack />
         <div className={styles.container_header}>
@@ -70,7 +89,7 @@ export default function AdminArticleDetail({ className, article_id, ...props }) 
             </div>
             <div className={styles.pubdate}>
             <span>Дата публікації: </span>
-            <span>{pubdate}</span>
+            <span>{date}</span>
             </div>
         </div>
         

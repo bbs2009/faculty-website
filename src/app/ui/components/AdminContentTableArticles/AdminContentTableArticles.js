@@ -8,26 +8,38 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AdminContentModal from '../AdminContentModal/AdminContentModal';
 import ButtonTag from '../ButtonTag/ButtonTag';
+import { useRouter } from 'next/navigation';
 
 export default function AdminContentTableArticles({ className,  ...props }) {
+  const router = useRouter();
+  
   const [openDelete, setOpenDelete] = useState(false);
-  const [openEdit, setOpenEdit] = useState(false);
+
+  const [publicationName, setPublicationName] = useState('');
+  const [publicationId, setPublicationId] = useState('');
+   const [page, setPage] = useState(1);
+  const [publications, setPublications] = useState([]);
 
   const PAGE_SIZE = 6;
-  const [page, setPage] = useState(1);
-  const [publications, setPublications] = useState([]);
+ 
   
   const { articles, isValidating, isLoading } = useGetArticles(page, PAGE_SIZE);
 
-  const handleOpenDelete = () =>   setOpenDelete(true);
-  const handleCloseDelete = () => setOpenDelete(false);
-  const handleOpenEdit = () =>   setOpenEdit(true);
-  const handleCloseEdit = () => setOpenEdit(false);
+  const handleOpenDelete = (id, name) =>  {setOpenDelete(true);
+                                            setPublicationName(name);
+                                            setPublicationId(id);}
 
+  const handleCloseDelete = () => {setOpenDelete(false);
+                                    setPublicationName('');
+                                    setPublicationId('');}
 
+  const handleClickDelete = () => {console.log(`видалено публікацію з  ${publicationName}`);
+                                  handleCloseDelete();}
 
   useEffect(() => {
     setPublications([]); 
+    setPublicationId('');
+    setPublicationName('');
     setPage(1); 
   }, []);
 
@@ -42,8 +54,6 @@ export default function AdminContentTableArticles({ className,  ...props }) {
     }
   }, [articles, page]);
 
-//   console.log(articles)
-
   
   const isLoadingMore = isLoading || (articles > 0 && articles && typeof articles[page - 1] === 'undefined');
   const isEmpty = articles && articles[0] && articles[0]?.length === 0;
@@ -54,15 +64,12 @@ export default function AdminContentTableArticles({ className,  ...props }) {
     
 		<content className={clsx(className, styles.content)}{  ...props}>
       <AdminContentModal open={openDelete} handleClose={handleCloseDelete} 
-        modal_body={<div>Ви впевнені, що хочете видалити цю публікацію?</div>}
+        modal_header_text={'Ви впевнені, що хочете видалити цю публікацію?'}
+        modal_content={publicationName}
         button1={<ButtonTag appearance={'delete-primary'} onClick={handleCloseDelete}>Відхилити</ButtonTag>}
-				button2={<ButtonTag appearance={'secondary'}>Видалити</ButtonTag>}
+				button2={<ButtonTag appearance={'secondary'} onClick={handleClickDelete}>Видалити</ButtonTag>}
       />
-      <AdminContentModal open={openEdit} handleClose={handleCloseEdit} 
-        modal_body={<div>Ви впевнені, що хочете редагувати цю публікацію?</div>}
-        button1={<ButtonTag appearance={'edit-primary'} onClick={handleCloseEdit}>Відхилити</ButtonTag>}
-				button2={<ButtonTag appearance={'secondary'}>Редагувати</ButtonTag>}
-      />
+      
 			<table>
                 <thead>
                     <tr>
@@ -83,8 +90,8 @@ export default function AdminContentTableArticles({ className,  ...props }) {
                         <td>{publication.category}</td>
                         <td>{publication.date}</td>
                         <td className={styles.action}>
-                            <button className={styles.edit} onClick={handleOpenEdit} aria-label="Edit"><Image src='/assets/icon-btn1.png' width='48' height='48' alt='Edit'/> </button>
-                            <button className={styles.delete}  onClick={handleOpenDelete} aria-label="Delete"><Image src='/assets/icon-btn2.png' width='48' height='48' alt='Delete'/> </button>
+                            <button className={styles.edit} onClick={() => { router.push(`/admin/science/article/${publication.id}/edit`);}} aria-label="Delete"><Image src='/assets/icon-btn1.png' width='48' height='48' alt='Edit'/> </button>
+                            <button className={styles.delete}  onClick={()=>handleOpenDelete(publication.id, publication.title)} aria-label="Delete"><Image src='/assets/icon-btn2.png' width='48' height='48' alt='Delete'/> </button>
                         </td>
                     </tr>
 					))}	

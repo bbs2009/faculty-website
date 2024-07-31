@@ -3,7 +3,7 @@ import styles from './AdminContentModal.module.css';
 import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 
-export default function AdminContentModal({ className, open, handleClose, modal_body, button1, button2, ...props }) {
+export default function AdminContentModal({ className, open, handleClose, modal_header_text, modal_content, button1, button2, ...props }) {
   
 	 const modalRef = useRef(null);
 
@@ -39,9 +39,11 @@ export default function AdminContentModal({ className, open, handleClose, modal_
 			<div className={styles.modal_backdrop}>
 				<div className={styles.modal_header}>
 					<button className={styles.closeButton} onClick={handleClose}>X</button>
+					<span className={styles.modal_header_text}>{modal_header_text}</span>
 				</div>
 				<div className={styles.modal_content}>
-					{modal_body}
+					{modal_content}
+					
 				</div>
 				<div className={styles.modal_footer}>
 					{button1}
