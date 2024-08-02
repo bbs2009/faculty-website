@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import ButtonTag from '../ButtonTag/ButtonTag';
 import AdminArticleDetailBack from '../AdminArticleDetailBack/AdminArticleDetailBack';
 import Image from 'next/image';
-import {useGetArticleDetail} from '../../../hooks/useAPI';
+import {useGetArticleDetail} from '../../../hooks/useSWR';
 import { useEffect,useState } from 'react';
 
 

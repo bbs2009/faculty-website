@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import ButtonTag from '../ButtonTag/ButtonTag';
 import ArticleDetailBack from '../ArticleDetailBack/ArticleDetailBack';
 import Image from 'next/image';
-import {useGetArticleDetail} from '../../../hooks/useAPI';
+import {useGetArticleDetail} from '../../../hooks/useSWR';
 
 
 

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import ArticlesCard from '../ArticlesCard/ArticlesCard';
 import ButtonTag from '../ButtonTag/ButtonTag';
-import { useGetArticles } from '../../../hooks/useAPI';
+import { useGetArticles } from '../../../hooks/useSWR';
 
 
 export default function Articles({ className, ...props }) {
@@ -27,14 +27,14 @@ export default function Articles({ className, ...props }) {
   useEffect(() => {
     if (articles) {
       if (page === 1) {
-        setPublications(articles); 
+        setPublications(articles.results); 
       } else {
         setPublications((prevPublications) => [...prevPublications, ...articles]); 
       }
     }
   }, [articles, page]);
 
-
+  console.log('publications', publications);
   
   const isLoadingMore = isLoading || (articles > 0 && articles && typeof articles[page - 1] === 'undefined');
   const isEmpty = articles && articles[0] && articles[0]?.length === 0;
@@ -81,4 +81,3 @@ export default function Articles({ className, ...props }) {
     </main>
   );
 }
-

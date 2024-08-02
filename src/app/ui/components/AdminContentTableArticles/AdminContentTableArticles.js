@@ -3,7 +3,7 @@
 import styles from './AdminContentTableArticles.module.css';
 import clsx from 'clsx';
 import { useState, useEffect } from 'react';
-import { useGetArticles } from '../../../hooks/useAPI';
+import { useGetArticles } from '../../../hooks/useSWR';
 import Link from 'next/link';
 import Image from 'next/image';
 import AdminContentModal from '../AdminContentModal/AdminContentModal';
@@ -47,9 +47,9 @@ export default function AdminContentTableArticles({ className,  ...props }) {
   useEffect(() => {
     if (articles) {
       if (page === 1) {
-        setPublications(articles); 
+        setPublications(articles.results); 
       } else {
-        setPublications((prevPublications) => [...prevPublications, ...articles]); 
+        setPublications((prevPublications) => [...prevPublications, ...articles.results]); 
       }
     }
   }, [articles, page]);
