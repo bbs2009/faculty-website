@@ -43,6 +43,17 @@ export default function useAPI(){
       }
   }
 
+    const  getMe = async ()=> {
+    
+    const data = await request(`${API_SERVER}/api/users/me/`,'GET') 
+    const response = await data.json();                             
+      console.log('getMe', response);
+
+      //                           }
+      return await response;
+  }
+
+
   const addArticle = async ( article_obj, token) => {
     const data = await request(`${API_SERVER}/api/publications/`, 
                                 'POST', 
@@ -51,14 +62,12 @@ export default function useAPI(){
                                   'Authorization': `token ${token}`
                                 }
     );
-
+    
     return data;
   }
 
     const updArticle = async ( id, article_obj, token) => {
-    
-    //  console.log('id', id);
-    //   console.log('article_obj', JSON.stringify(article_obj)); 
+
 
     const data = await request(`${API_SERVER}/api/publications/${id}/`, 
                                 'PUT', 
@@ -89,7 +98,7 @@ export default function useAPI(){
 
 
 
-  return {loading, error, clearError , login, addArticle,updArticle, delArticle}
+  return {loading, error, clearError , login, getMe, addArticle,updArticle, delArticle}
 
 }
 

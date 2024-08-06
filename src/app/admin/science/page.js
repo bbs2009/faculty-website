@@ -8,8 +8,9 @@ import AdminContentTableArticles from '@/app/ui/components/AdminContentTableArti
 import ButtonTag from '@/app/ui/components/ButtonTag/ButtonTag';
 
 import { useRouter } from 'next/navigation';
+import { withAuth } from '@/app/utils/withAuth';
 
-export default function AdminSciencePage(...props) {
+function AdminSciencePage(...props) {
 	const router = useRouter();
 	return (
 		   <div className={styles.container}>
@@ -25,4 +26,5 @@ export default function AdminSciencePage(...props) {
 		
 	);
 }
+export default withAuth(AdminSciencePage);
 
