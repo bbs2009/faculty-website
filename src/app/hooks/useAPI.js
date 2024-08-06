@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import useHttp from './http.hook';
 
 
-const API_SERVER = 'http://127.0.0.1:8000';
-// const API_SERVER = 'https://faculty-api.zsmu.zp.ua';
+// const API_SERVER = 'http://127.0.0.1:8000';
+const API_SERVER = 'https://faculty-api.zsmu.zp.ua';
 
 const fetcher = async (...args) => {
   try {
