@@ -25,22 +25,6 @@ const fetcher = async (...args) => {
   }
 };
 
-//   function useGetArticles(page, page_size) {
-
-//   const { data,
-//     isValidating,
-//     isLoading } = useSWR(
-//       () => `${API_SERVER}/api/v1/publications/?page=${page - 1}&size=${page_size}`, fetcher)
-
-//   return {
-//     articles: data,
-//     isValidating,
-//     isLoading
-//   }
-// }
-
-
-
 
 
 const downloadPDF = (pdfBase64, fileName) => {
@@ -70,7 +54,7 @@ function useGetArticleDetail(id) {
   }
 }
 
-function useGetArticles(page, page_size) {
+function useGetArticles(page) {
 
   const { data, isValidating, isLoading, mutate } = useSWR(
       () => `${API_SERVER}/api/publications/?page=${page}`, fetcher)
@@ -83,50 +67,21 @@ function useGetArticles(page, page_size) {
   }
 }
 
-function useSearchArticles(search_string, page, page_size) {
+function useSearchArticles(search_string, page) {
 
   const { data,
     isValidating,
-    isLoading, totalElements } = useSWR(
-      () => `${API_SERVER}/api/v1/publications/search?text=${search_string}&page=${page - 1}&size=${page_size}`, fetcher)
-
+    isLoading } = useSWR(
+      () => `${API_SERVER}/api/publications/?title=${search_string}&page=${page}`, fetcher)
+    
+  
   return {
-    articles: data?.content || [],
-    isValidating,
-    isLoading,
-    totalElements: data?.totalElements || 0,
-    totalPages: data?.totalPages || 0,
-    size: data?.size || page_size,
-    number: data?.number || page - 1
+    articles: data,
+   isValidating,
+    isLoading
+     
   }
 }
-
-// function addArticle(title, author, category, date, description, file, fileName, token) {
-//   const myHeaders = new Headers();
-//   myHeaders.append("accessToken", token);
-
-//   const formdata = new FormData();
-//   formdata.append("title ", title);
-//   formdata.append("author ", author);
-//   formdata.append("category ", category);
-//   formdata.append("date ", date);
-//   formdata.append("description", description);
-//   formdata.append("file ", file);
-//   formdata.append("fileName ", fileName);
-
-
-//   const requestOptions = {
-//     method: "POST",
-//     headers: myHeaders,
-//     body: formdata,
-//     redirect: "follow"
-//   };
-
-//   fetch("http://89.168.113.31/api/v1/publications/", requestOptions)
-//     .then((response) => response.text())
-//     .then((result) => console.log(result))
-//     .catch((error) => console.error(error));
-// }
 
 
 export { useGetArticleDetail, useGetArticles, useSearchArticles };

@@ -57,8 +57,8 @@ export default function useAPI(){
 
     const updArticle = async ( id, article_obj, token) => {
     
-     console.log('id', id);
-      console.log('article_obj', JSON.stringify(article_obj)); 
+    //  console.log('id', id);
+    //   console.log('article_obj', JSON.stringify(article_obj)); 
 
     const data = await request(`${API_SERVER}/api/publications/${id}/`, 
                                 'PUT', 

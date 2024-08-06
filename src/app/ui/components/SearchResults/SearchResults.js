@@ -8,7 +8,8 @@ import { usePathname } from 'next/navigation';
 
 import ArticlesCard from '../ArticlesCard/ArticlesCard';
 import ButtonTag from '../ButtonTag/ButtonTag';
-import { useGetArticles, useSearchArticles } from '../../../hooks/useAPI';
+
+import {useSearchArticles} from '@/app/hooks/useSWR';
 import ArticleDetailBack from '../ArticleDetailBack/ArticleDetailBack';
 
 
@@ -17,16 +18,14 @@ export default function SearchResults({ className,  searchString, ...props }) {
   const router = useRouter();
   const { replace } = useRouter();
   const pathname = usePathname();
-  const PAGE_SIZE = 6;
   const [page, setPage] = useState(1);
-  const [publications, setPublications] = useState([]);
+  const [findedPublications, setFindedPublications] = useState([]);
   const [searchStringState, setSearchStringState] = useState('');
   const [searchArticleCount, setSearchArticleCount] = useState(0);
 
-  const { articles, isValidating, isLoading, totalElements } = useSearchArticles(searchString, page, PAGE_SIZE);
-  const isLoadingMore = isLoading || (page > 0 && publications && typeof publications[page - 1] === 'undefined');
-  const isEmpty = publications && publications[0] && publications[0].length === 0;
-  const isReachingEnd = isEmpty || (publications && publications.length < page);
+  // console.log('searchString', searchString);
+  const { articles, isValidating, isLoading } = useSearchArticles(searchString, page);
+
 
 
   const searchHandler = () => {
@@ -45,19 +44,30 @@ export default function SearchResults({ className,  searchString, ...props }) {
     
 	};
 
+  // console.log('articles', articles);
+
   useEffect(() => {
-    if (searchString) {
-      setSearchStringState(searchString);
-      setSearchArticleCount(totalElements);
-      setPublications([]);
-      
-    }
+    setFindedPublications([]);
+    setSearchStringState(searchString);
+    setSearchArticleCount(0);
 
+
+    setPage(1);
+  }, []);
+
+
+  useEffect(() => {
     if (articles) {
-      setPublications((prevPublications) => [...prevPublications, ...articles]);
+      // console.log('articles.results.count', articles.results.length);
+      if (page === 1) {
+        setFindedPublications(articles.results);
+        setSearchArticleCount(articles.results?.length);
+      } else {
+        setFindedPublications((prevPublications) => [...prevPublications, ...articles.results]);
+        setSearchArticleCount(articles.results?.length);
+      }
     }
-  }, [articles, searchString, totalElements]);
-
+  }, [articles, page]);
 
 
   return (
@@ -72,7 +82,7 @@ export default function SearchResults({ className,  searchString, ...props }) {
       
       <div className={styles.input_text_group}>
         <div className={styles.input_text}>
-          <label for="search"></label>
+          <label htmlFor="search"></label>
           <input
             type="text"
             name='search'
@@ -87,9 +97,9 @@ export default function SearchResults({ className,  searchString, ...props }) {
 
 
      
-      {isEmpty ? <p>Статті відсутні</p> : null}
+      {/* {isEmpty ? <p>Статті відсутні</p> : null} */}
 
-      {publications.map((publication) => (
+      {findedPublications.map((publication) => (
         <div className={styles.card_item} key={publication.id}>
           <ArticlesCard
             className={styles.card_item}

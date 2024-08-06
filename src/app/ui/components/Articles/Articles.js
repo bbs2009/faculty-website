@@ -12,11 +12,10 @@ import { useGetArticles } from '../../../hooks/useSWR';
 
 export default function Articles({ className, ...props }) {
   const router = useRouter();
-  const PAGE_SIZE = 2;
   const [page, setPage] = useState(1);
   const [publications, setPublications] = useState([]);
 
-  const { articles, isValidating, isLoading } = useGetArticles(page, PAGE_SIZE);
+  const { articles, isValidating, isLoading } = useGetArticles(page);
 
   useEffect(() => {
     setPublications([]); 
@@ -34,19 +33,11 @@ export default function Articles({ className, ...props }) {
     }
   }, [articles, page]);
 
-  console.log('publications', publications);
+
   
   const isLoadingMore = isLoading || (articles > 0 && articles && typeof articles[page - 1] === 'undefined');
   const isEmpty = articles && articles[0] && articles[0]?.length === 0;
   const isReachingEnd = isEmpty || (articles && articles.length < page);
-
-  // console.log('isLoading', isLoading);
-  // console.log('isLoadingMore', isLoadingMore);
-  // console.log('isEmpty', isEmpty);
-  // console.log('isReachingEnd', isReachingEnd);
-  // console.log('page', page);
-  // console.log('articles', articles);
-  // console.log('articles[0].length', articles?.length);
 
   return (
       <main className={clsx(className, styles.articles_list)} {...props} id='essense'>
