@@ -4,7 +4,9 @@ import useSWR from 'swr'
 
 
 // const API_SERVER = 'http://127.0.0.1:8000';
-const API_SERVER = 'https://faculty-api.zsmu.zp.ua';
+// const API_SERVER = 'https://faculty-api.zsmu.zp.ua';
+const API_SERVER = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_APP_PROD_API_URL : process.env.NEXT_PUBLIC_APP_DEV_API_URL;
+
 
 const fetcher = async (...args) => {
   try {
