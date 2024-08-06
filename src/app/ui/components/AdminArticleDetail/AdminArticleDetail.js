@@ -7,9 +7,6 @@ import {useGetArticleDetail} from '../../../hooks/useSWR';
 import { useEffect,useState } from 'react';
 
 
-
-
-
 export default function AdminArticleDetail({ className, article_id, ...props }) {
      const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -19,40 +16,7 @@ export default function AdminArticleDetail({ className, article_id, ...props }) 
     const [isEmpty, setIsEmpty] = useState(true);
 
   const {article, isLoading, isError, downloadPDF} = useGetArticleDetail(article_id);
-  // if (isLoading) {
-  //   return (
-  //     <div className={clsx(className, styles.detail)} {...props}>
   
-  //     <div className={styles.article_container_message}>
-  //       <p>Завантажуємо статтю...</p>
-  //     </div>     
-  //   </div>
-  //   )
-  // }
-
-  // if (isError) {
-	//   return (
-  //     <div className={clsx(className, styles.detail)} {...props}>
-  //     <AdminArticleDetailBack />
-  //     <div className={styles.article_container_message}>
-        
-  //       <h2>Виникла помилка при завантаженні</h2>
-  //     </div>     
-  //   </div>
-  //   )
-  // }
-
-  // if (!article) {
-  //   return (
-  //   <div className={clsx(className, styles.detail)} {...props}>
-  //     <AdminArticleDetailBack />
-  //     <div className={styles.article_container_message}>
-  //       <p>Статтю не знайдено</p>
-  //     </div>     
-  //   </div>
-  //   )
-  // }
-
   useEffect(() => {
         if (article) {
             setTitle(article.title);

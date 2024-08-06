@@ -47,6 +47,19 @@
 	color: var(--white);
 }
 
+.delete_secondary {
+	color: var(--btn-delete-secondary-text);
+	background-color: var(--btn-delete-secondary-default);
+}
+.delete_secondary:hover {
+	background-color: var(--black);
+	color: var(--white);
+}
+.delete_secondary:disabled {
+	background-color: var(--gray-500);
+	color: var(--white);
+}
+
 
 
 .edit_primary {

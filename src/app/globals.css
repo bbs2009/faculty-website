@@ -28,6 +28,14 @@
   --btn-delete-text-primary-disabled: #E2E5E8;
 
 
+  --btn-delete-secondary-default: white;
+  --btn-delete-secondary-text: var(#B90000);
+  --btn-delete-secondary-hover: #020D1D;
+  --btn-delete-secondary-text-hover: #FFFFFF;
+  --btn-delete-secondary-disabled: #5E6063;
+  --btn-delete-text-secondary-disabled: #E2E5E8;
+
+
   --btn-edit-primary-default: var(--secondary-blue-100);
   --btn-edit-delete-primary-text: var(--text-primary);
   --btn-edit-delete-primary-hover: #020D1D;

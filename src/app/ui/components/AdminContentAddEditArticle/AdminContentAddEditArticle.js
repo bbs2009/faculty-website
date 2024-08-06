@@ -2,97 +2,49 @@
 import styles from './AdminContentAddEditArticle.module.css';
 import clsx from 'clsx';
 import ButtonTag from '../ButtonTag/ButtonTag';
-import { useState, useEffect, useRef } from 'react';
-import { useGetArticleDetail,  addArticle } from '../../../hooks/useSWR';
+import { useRef } from 'react'; 
 
 
-
-export default function AdminContentAddEditArticle({ className, article_id = '', ...props }) {
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [category, setCategory] = useState('');
-    const [date, setDate] = useState('');
-    const [description, setDescription] = useState('');
-    const [titleLength, setTitleLength] = useState(0);
-    const [fileName, setFileName] = useState('');
-    const [file, setFile] = useState(null);
-    const [token, setToken] = useState('');
-
-    const [error, setError] = useState(false);
-
+export default function AdminContentAddEditArticle({ className, ...props }) {
+    const {
+        title,  setTitle, author, setAuthor, category, 
+        setCategory, date, setDate, description, setDescription,
+        titleLength, setTitleLength, fileName, setFileName,
+        file, setFile, errorField, setErrorField,
+        openMsg, setOpenMsg,
+        isLoading, isError, loading, error
+    } = props;
+    
     const inputFile = useRef(null);
-
-    const { article, isLoading, isError } = useGetArticleDetail(article_id);
-
-    useEffect(() => {
-        if (article) {
-            setTitle(article.title);
-            setAuthor(article.author);
-            setCategory(article.category);
-            setDate(article.date);
-            setDescription(article.description);
-        }
-    }, [article]);
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
         setTitleLength(event.target.value.length);
         if (event.target.value.length > 120) {
-            setError(true);
+            setErrorField(true);
         } else {
-            setError(false);
+            setErrorField(false);
         }
     }
 
 
     const handleAuthorChange = (event) => {
         setAuthor(event.target.value);
-        // setTitleLength(event.target.value.length);
-        // if (event.target.value.length > 120) {
-        //     setError(true);
-        // } else {        
-        //     setError(false);
-        // }
+
     }
 
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
-        // setTitleLength(event.target.value.length);
-        // if (event.target.value.length > 120) {
-        //     setError(true);
-        // } else {        
-        //     setError(false);
-        // }
+
     }
     const handleDateChange = (event) => {
         setDate(event.target.value);
-        // setTitleLength(event.target.value.length);
-        // if (event.target.value.length > 120) {
-        //     setError(true);
-        // } else {        
-        //     setError(false);
-        // }
+
     }
 
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
 
-    }
-
-    // const {} = useLogin();
-
-    // useEffect(() => {
-    //     if (response) {
-    //         response.then((data) => {
-    //             setToken(data.accessToken);
-    //         });
-    //     }
-    // }, [response]);
-
-    const handleAddArticle = (e) => {
-        e.preventDefault();
-        // addArticle(title, author, category, date, description, file, fileName, token);
-        // console.log(title, author, category, date, description, file, fileName, token);
     }
 
     const handleFileChange = (event) => {
@@ -111,18 +63,20 @@ export default function AdminContentAddEditArticle({ className, article_id = '',
 
 
 
+
     return (
         <content className={clsx(className, styles.content)}{...props}>
-            {isLoading ? 'Завантажуємо статтю...' : null}
-            {isError ? 'Виникла помилка при завантаженні' : null}
-            {!article? 'Статтю не знайдено': null}
-            <br/>
-            {token ? token: 'Ви не авторизовані'}
-           
+
+            {isLoading || loading ? 'Завантажуємо статтю...' : null}
+            {isError || error ? 'Виникла помилка при завантаженні' : null}
+            {/* {!article? 'Статтю не знайдено': null} */}
+            <br />
+            
+
             <form className={styles.publication_form}>
                 <div className={styles.form_group}>
                     <label htmlFor="title">Назва публікації</label>
-                    <input type="text" id="title" className={error ? 'error' : null} maxLength="120" onChange={handleTitleChange} value={title} />
+                    <input type="text" id="title" className={errorField ? 'error' : null} maxLength="120" onChange={handleTitleChange} value={title} />
                     <span className={styles.char_count}>{titleLength}/120</span>
                 </div>
                 <div className={styles.form_group_row}>
@@ -146,13 +100,12 @@ export default function AdminContentAddEditArticle({ className, article_id = '',
                 <div className={styles.form_group_button}>
                     <label>Завантажте файл для повного ознайомлення</label>
                     <p>Необхідний формат файлу: PDF</p>
-                    <p> {fileName? `Завантажено файл: ${fileName}`:null}</p>
-                    
+                    <p> {fileName ? `Завантажено файл: ${fileName}` : null}</p>
+
                     <input id="input_file" type="file" className={styles.input_file} ref={inputFile} onChange={handleFileChange} />
                     <ButtonTag className={styles.upload_file} appearance={'primary'} type="button" onClick={handleButtonClick} >Завантажити файл</ButtonTag>
 
                 </div>
-                <ButtonTag className={styles.submit_button} appearance={'primary'} type="submit" onClick={handleAddArticle}>Зберегти</ButtonTag>
             </form>
 
 

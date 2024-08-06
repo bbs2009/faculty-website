@@ -3,8 +3,8 @@
 import useSWR from 'swr'
 
 
-// const API_SERVER = 'http://127.0.0.1:8000';
-const API_SERVER = 'https://faculty-api.zsmu.zp.ua';
+const API_SERVER = 'http://127.0.0.1:8000';
+// const API_SERVER = 'https://faculty-api.zsmu.zp.ua';
 
 const fetcher = async (...args) => {
   try {
@@ -58,27 +58,26 @@ const downloadPDF = (pdfBase64, fileName) => {
 
 function useGetArticleDetail(id) {
 
-  const { data, isLoading, error, fileData } = useSWR(id ? `${API_SERVER}/api/publications/${id}` : null, fetcher);
+  const { data, isLoading, error, fileData, mutate } = useSWR(id ? `${API_SERVER}/api/publications/${id}` : null, fetcher);
   return {
     article: data,
     isLoading,
     isError: error,
-    downloadPDF: () => data && downloadPDF(data.fileData, data.fileName)
-
+    downloadPDF: () => data && downloadPDF(data.fileData, data.fileName),
+    mutate
   }
 }
 
 function useGetArticles(page, page_size) {
 
-  const { data,
-    isValidating,
-    isLoading } = useSWR(
+  const { data, isValidating, isLoading, mutate } = useSWR(
       () => `${API_SERVER}/api/publications/?page=${page}`, fetcher)
 
   return {
     articles: data,
     isValidating,
-    isLoading
+    isLoading,
+    mutate 
   }
 }
 

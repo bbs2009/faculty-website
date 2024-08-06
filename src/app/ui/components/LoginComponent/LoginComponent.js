@@ -33,7 +33,7 @@ export default function LoginComponent({ className,  ...props }) {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        event.preventDefault();
+    
         // setIsLoading(true);
         
             login(loginField, passwordField)
@@ -54,42 +54,6 @@ export default function LoginComponent({ className,  ...props }) {
     
     
     
-    
-    // try {
-    //   const result =  useLogin(login, password); // Виклик функції логіну з хуком
-    //   if (result.accessToken) {
-    //     setAccessToken(result.accessToken);
-    //     localStorage.setItem('accessToken', result.accessToken);
-    //     window.location.href = '/admin';
-    //   } else {
-    //     setIsLoginError(true);
-    //   }
-    // } catch (error) {
-    //   console.error('Error during login:', error);
-    //   setIsLoginError(true);
-    // } finally {
-    //   setIsLoading(false);
-    // }
-    // }
-    
-
-    // useEffect(() => {
-    //     if (isLoginError) {
-    //         setError(true);
-    //     } else {
-    //         setError(false);
-    //     }
-    // }, [isLoginError]);
-
-    // useEffect(() => {
-    //     if (accessToken) {
-
-    //         localStorage.setItem('accessToken', accessToken);
-    //         // console.log('accessToken', accessToken);
-    //         window.location.href = '/admin';
-    //     }
-    // }, [accessToken]);
-
 
 
 	return (
