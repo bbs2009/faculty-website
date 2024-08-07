@@ -7,7 +7,6 @@ import useHttp from './http.hook';
 const API_SERVER = process.env.NEXT_PUBLIC_APP_API_URL ;
 
 
-
 const fetcher = async (...args) => {
   try {
     const res = await fetch(...args);
