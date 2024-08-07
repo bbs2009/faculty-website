@@ -4,52 +4,54 @@ import ButtonTag from '../ButtonTag/ButtonTag';
 import ArticleDetailBack from '../ArticleDetailBack/ArticleDetailBack';
 import Image from 'next/image';
 import {useGetArticleDetail} from '../../../hooks/useSWR';
-
+import {useEffect, useState} from 'react';
 
 
 
 
 export default function ArticleDetail({ className, article_id, ...props }) {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
+  const [date, setDate] = useState('');
+  const [description, setDescription] = useState('');
+  const [file, setFile] = useState(null);
+  const [isEmpty, setIsEmpty] = useState(true);
 
-  const {article, isLoading, isError, downloadPDF} = useGetArticleDetail(article_id);
-  if (isLoading) {
-    return (
-      <div className={clsx(className, styles.detail)} {...props}>
-  
-      <div className={styles.article_container_message}>
-        <p>Завантажуємо статтю...</p>
-      </div>     
-    </div>
-    )
-  }
+  const {article, isLoading, isError} = useGetArticleDetail(article_id);
+ 
 
-  if (isError) {
-	  return (
-      <div className={clsx(className, styles.detail)} {...props}>
-      <ArticleDetailBack />
-      <div className={styles.article_container_message}>
-        
-        <h2>Виникла помилка при завантаженні</h2>
-      </div>     
-    </div>
-    )
-  }
+    useEffect(() => {
+    if (article) {
+      setTitle(article.title);
+      setAuthor(article.author);
+      setCategory(article.category);
+      setDate(article.date);
+      setDescription(article.description);
+      setFile(article.file);
+      setIsEmpty(false);
+    }
+  }, [article]);
 
-  if (!article) {
-    return (
-    <div className={clsx(className, styles.detail)} {...props}>
-      <ArticleDetailBack />
-      <div className={styles.article_container_message}>
-        <p>Статтю не знайдено</p>
-      </div>     
-    </div>
-    )
-  }
-
-  const { title, author, category, date, description} = article;
  
   const pubdate = date;
 
+   const downloadPDF = () => {
+    const API_SERVER = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_APP_PROD_API_URL : process.env.NEXT_PUBLIC_APP_DEV_API_URL;
+    console.log('downloadPDF', `${API_SERVER}/${file}`);
+    try {
+      const downloadLink = document.createElement('a');
+      downloadLink.href = `${API_SERVER}/${file}`;
+      downloadLink.target = '_blank';
+      downloadLink.rel = 'noopener noreferrer';
+      downloadLink.download = 'file.pdf';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink)
+    } catch (error) {
+      console.error('Error downloading PDF:', error);
+    }
+  }
   
 
   return (

@@ -21,10 +21,7 @@ export const  withAuth = (Component) => {
           
         }, [token]);
 
-       
-
-
-        return !!token ? <Component token={token} /> : null; // Render whatever you want while the authentication occurs
+        return !!token ? <Component token={token} /> : null; 
     };
 
     return AuthenticatedComponent;

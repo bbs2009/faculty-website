@@ -54,25 +54,65 @@ export default function useAPI(){
   }
 
 
+  // const addArticle = async ( article_obj, token) => {
+  //   const data = await request(`${API_SERVER}/api/publications/`, 
+  //                               'POST', 
+  //                               JSON.stringify(article_obj),
+  //                               {'content-Type':'Application/json',
+  //                                 'Authorization': `token ${token}`
+  //                               }
+  //   );
+    
+  //   return data;
+  // }
+
   const addArticle = async ( article_obj, token) => {
+    
+    if (Object.keys(article_obj).length === 0) { throw new Error('No data'); }
+
+    const formData = new FormData();
+    formData.append('title', article_obj.title);
+    formData.append('author', article_obj.author);
+    formData.append('category', article_obj.category);
+    formData.append('date', article_obj.date);
+    formData.append('description', article_obj.description);
+    
+    // console.log('article_obj.file', !article_obj.file);
+
+    if (article_obj.file) {
+        formData.append('file', article_obj.file);
+    }
+    // console.log('formData', formData);  
     const data = await request(`${API_SERVER}/api/publications/`, 
                                 'POST', 
-                                JSON.stringify(article_obj),
-                                {'content-Type':'Application/json',
+                                formData,
+                                {
                                   'Authorization': `token ${token}`
                                 }
     );
-    
     return data;
   }
 
+
     const updArticle = async ( id, article_obj, token) => {
 
+    if (Object.keys(article_obj).length === 0) { throw new Error('No data'); }
+
+    const formData = new FormData();
+    formData.append('title', article_obj.title);
+    formData.append('author', article_obj.author);
+    formData.append('category', article_obj.category);
+    formData.append('date', article_obj.date);
+    formData.append('description', article_obj.description);
+
+    if (article_obj.file) {
+        formData.append('file', article_obj.file);
+    }
 
     const data = await request(`${API_SERVER}/api/publications/${id}/`, 
                                 'PUT', 
-                                JSON.stringify(article_obj),
-                                {'content-Type':'Application/json',
+                                formData,
+                                {
                                   'Authorization': `token ${token}`
                                 }
     );

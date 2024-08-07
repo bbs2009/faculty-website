@@ -51,6 +51,7 @@ export default function AdminContentAddEditArticle({ className, ...props }) {
         // console.log('event', event);
         const selectedFile = event.target.files[0];
         // console.log('event.target.files[0]', event.target.files[0])
+        // console.log('selectedFile', selectedFile);
         if (selectedFile) {
             setFile(selectedFile);
             setFileName(selectedFile.name);

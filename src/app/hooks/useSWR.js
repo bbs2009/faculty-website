@@ -45,11 +45,12 @@ const downloadPDF = (pdfBase64, fileName) => {
 function useGetArticleDetail(id) {
 
   const { data, isLoading, error, fileData, mutate } = useSWR(id ? `${API_SERVER}/api/publications/${id}` : null, fetcher);
+
   return {
     article: data,
     isLoading,
     isError: error,
-    downloadPDF: () => data && downloadPDF(data.fileData, data.fileName),
+    // downloadPDF: () => data && downloadPDF(data.fileData, data.fileName),
     mutate
   }
 }
