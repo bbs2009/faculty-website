@@ -36,7 +36,8 @@ export default function AdminArticleDetail({ className, article_id, ...props }) 
 
     try {
       const downloadLink = document.createElement('a');
-      downloadLink.href = `${API_SERVER}/${file}`;
+      downloadLink.href = `${process.env.NEXT_PUBLIC_APP_STATIC}${file}`;
+      // downloadLink.href = `${API_SERVER}/${file}`;
       downloadLink.target = '_blank';
       downloadLink.rel = 'noopener noreferrer';
       downloadLink.download = 'file.pdf';
