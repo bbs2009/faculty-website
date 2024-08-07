@@ -32,7 +32,7 @@ export default function AdminArticleDetail({ className, article_id, ...props }) 
 
 
   const downloadPDF = () => {
-    const API_SERVER = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_APP_PROD_API_URL : process.env.NEXT_PUBLIC_APP_DEV_API_URL;
+    const API_SERVER = process.env.NEXT_PUBLIC_APP_API_URL ;
 
     try {
       const downloadLink = document.createElement('a');

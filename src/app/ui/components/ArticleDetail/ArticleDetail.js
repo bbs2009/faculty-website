@@ -35,11 +35,11 @@ export default function ArticleDetail({ className, article_id, ...props }) {
 
  
   const pubdate = date;
-  console.log('link', `${API_SERVER}/${file}`);
+ 
    const downloadPDF = () => {
     console.log('downloadPDF', `${API_SERVER}/${file}`);
-    const API_SERVER = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_APP_PROD_API_URL : process.env.NEXT_PUBLIC_APP_DEV_API_URL;
-    console.log('downloadPDF', `${API_SERVER}/${file}`);
+    const API_SERVER = process.env.NEXT_PUBLIC_APP_API_URL ;
+
     try {
       const downloadLink = document.createElement('a');
       downloadLink.href = `${API_SERVER}/${file}`;
