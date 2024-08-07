@@ -4,7 +4,7 @@ import useSWR from 'swr'
 
 
 const API_SERVER = process.env.NEXT_PUBLIC_APP_API_URL ;
-console.log('API_SERVER', API_SERVER);
+// console.log('API_SERVER', API_SERVER);
 
 const fetcher = async (...args) => {
   try {

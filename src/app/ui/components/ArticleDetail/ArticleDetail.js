@@ -37,7 +37,7 @@ export default function ArticleDetail({ className, article_id, ...props }) {
   const pubdate = date;
  
    const downloadPDF = () => {
-    console.log('downloadPDF', `${API_SERVER}/${file}`);
+    // console.log('downloadPDF', `${API_SERVER}/${file}`);
     const API_SERVER = process.env.NEXT_PUBLIC_APP_API_URL ;
 
     try {
