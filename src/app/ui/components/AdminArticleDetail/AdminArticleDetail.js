@@ -32,11 +32,11 @@ export default function AdminArticleDetail({ className, article_id, ...props }) 
 
 
   const downloadPDF = () => {
-    const API_SERVER = process.env.NEXT_PUBLIC_APP_API_URL ;
+    
 
     try {
       const downloadLink = document.createElement('a');
-      downloadLink.href = `${process.env.NEXT_PUBLIC_APP_STATIC}${file}`;
+      downloadLink.href = process.env.NEXT_PUBLIC_APP_STATIC? `${process.env.NEXT_PUBLIC_APP_STATIC}${file}`: `${file}`;
       downloadLink.target = '_blank';
       downloadLink.rel = 'noopener noreferrer';
       downloadLink.download = 'file.pdf';

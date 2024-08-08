@@ -2,48 +2,80 @@
 
 import styles from './Articles.module.css';
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import ArticlesCard from '../ArticlesCard/ArticlesCard';
 import ButtonTag from '../ButtonTag/ButtonTag';
 import { useGetArticles } from '../../../hooks/useSWR';
+import { set } from 'date-fns';
 
 
 export default function Articles({ className, ...props }) {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [publications, setPublications] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [isReachingEnd, setIsReachingEnd] = useState(false);
+  const [loadArticles, setLoadArticles] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorText, setErrorText] = useState('');
 
-  const { articles, isValidating, isLoading } = useGetArticles(page);
+  const { articles, isValidating, isLoading, error } = useGetArticles(page);
 
   useEffect(() => {
-    setPublications([]); 
-    setPage(1); 
-  }, []);
+    if (typeof articles === 'undefined') {
+    setIsEmpty(true);
+    setIsReachingEnd(true);
 
-  
-  useEffect(() => {
-    if (articles) {
-      if (page === 1) {
-        setPublications(articles.results); 
-      } else {
-        setPublications((prevPublications) => [...prevPublications, ...articles]); 
-      }
+  } else if (articles && articles.results.length === 0) {
+    setIsEmpty(true);
+    setLoadArticles(false);
+    setIsReachingEnd(true);
+
+  } else if (articles && articles.results.length > 0 && articles.next === null) {
+    setIsEmpty(false);
+    setLoadArticles(true);
+    setIsReachingEnd(true);
+
+  } else if (articles && articles.results.length > 0 && articles.next !== null) {
+    setIsEmpty(false);
+    setLoadArticles(true);
+    setIsReachingEnd(false);
+    
     }
-  }, [articles, page]);
+
+  if (error) {
+    setIsError(true);
+    setErrorText('Failed to load articles');
+  }    
+
+  },[articles, isEmpty, isReachingEnd, loadArticles, page, error]);
+
 
 
   
-  const isLoadingMore = isLoading || (articles > 0 && articles && typeof articles[page - 1] === 'undefined');
-  const isEmpty = articles && articles[0] && articles[0]?.length === 0;
-  const isReachingEnd = isEmpty || (articles && articles.length < page);
+  useEffect(() => {
+    if(loadArticles) {
+
+      if (articles) {
+      setPublications([...publications, ...articles.results]);
+      }
+  
+    }
+
+  }
+  ,[loadArticles, articles, page]);
+
+
+  
 
   return (
       <main className={clsx(className, styles.articles_list)} {...props} id='essense'>
       <h1 className={styles.h1_main}>Наукова робота:</h1>
       
-      {isEmpty ? <p>Статті відсутні</p> : null}
+      {/* {isEmpty ? <p>Статті відсутні</p> : null} */}
+      {/* {isError ? <p>Помилка завантаження статей:</p> : null} */}
 
       {publications.map((publication) => (
         <div className={styles.card_item} key={publication.id}>
@@ -59,12 +91,12 @@ export default function Articles({ className, ...props }) {
         </div>
       ))}
       <div className={styles.load_more}>
-        {isReachingEnd ? (
+        {isReachingEnd || isEmpty ? (
           <ButtonTag appearance='primary' disabled>
             Статті відсутні
           </ButtonTag>
         ) : (
-          <ButtonTag appearance='primary' onClick={() => setPage(page + 1)}>
+          <ButtonTag appearance='primary' onClick={()=>setPage((prev)=>prev+1)}>
             Завантажити ще
           </ButtonTag>
         )}

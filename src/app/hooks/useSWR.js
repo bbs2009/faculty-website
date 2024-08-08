@@ -54,13 +54,14 @@ function useGetArticleDetail(id) {
 
 function useGetArticles(page) {
 
-  const { data, isValidating, isLoading, mutate } = useSWR(
+  const { data, isValidating, isLoading, error, mutate } = useSWR(
       () => `${API_SERVER}/api/publications/?page=${page}`, fetcher)
 
   return {
     articles: data,
     isValidating,
     isLoading,
+    error,
     mutate 
   }
 }
